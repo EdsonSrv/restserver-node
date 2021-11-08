@@ -7,7 +7,7 @@ router.get('/', usuariosGET)
 
 router.post('/', usuariosPost)
 
-router.put('/', usuariosPut)
+router.put('/:id', usuariosPut)
 
 router.delete('/', usuariosDelete)
 
