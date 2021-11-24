@@ -33,9 +33,8 @@ const usuariosPost = async (req, res = response) => {
 
 const usuariosPut = async (req, res = response) => {
   const { id } = req.params
-  const { password, google, correo, ...resto} = req.body
+  const { _id, password, google, correo, ...resto} = req.body
 
-  //TODO validar vs DB
   if( password ){
     //Encriptar contraseña
     const salt = bcryptjs.genSaltSync()
