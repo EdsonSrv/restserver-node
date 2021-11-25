@@ -49,10 +49,16 @@ const usuariosPut = async (req, res = response) => {
   res.json(usuario)
 }
 
-const usuariosDelete = (req, res = response) => {
-  res.json({
-    msg: 'delete API - controlador'
-  })
+const usuariosDelete = async (req, res = response) => {
+  const { id } = req.params
+
+  //Borrado físico
+  // const usuario = await Usuario.findByIdAndDelete( id )
+
+  //Borrado lógico
+  const usuario = await Usuario.findByIdAndUpdate( id, { estado: false })
+
+  res.json(usuario)
 }
 
 module.exports = {
