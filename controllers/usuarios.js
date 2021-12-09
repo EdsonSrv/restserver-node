@@ -57,8 +57,9 @@ const usuariosDelete = async (req, res = response) => {
 
   //Borrado lógico
   const usuario = await Usuario.findByIdAndUpdate( id, { estado: false })
+  const usuarioAutenticado = req.usuario
 
-  res.json(usuario)
+  res.json({usuario, usuarioAutenticado})
 }
 
 module.exports = {
