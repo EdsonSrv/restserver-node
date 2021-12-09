@@ -1,6 +1,6 @@
 const { response, request } = require("express")
 
-const esAdminrole = ( req = request, res = response, next ) => {
+const esAdminRole = ( req = request, res = response, next ) => {
   if( !req.usuario ) return res.status(500).json({
     msg: 'Se quiere validar el rol sin verificar el token primero'
   })
@@ -12,6 +12,21 @@ const esAdminrole = ( req = request, res = response, next ) => {
   next()
 }
 
+const tieneRole = ( ...roles ) => {
+  return ( req = request, res = response, next ) => {
+    if( !req.usuario ) return res.status(500).json({
+      msg: 'Se quiere validar el rol sin verificar el token primero'
+    })
+
+    if( !roles.includes( req.usuario.rol ) ) return res.status(401).json({
+      msg: `El servicio requiere uno de estos roles: ${ roles }`
+    })
+    
+    next()
+  }
+}
+
 module.exports = {
-  esAdminrole
+  esAdminRole,
+  tieneRole
 }
