@@ -12,10 +12,10 @@ const { validarJWT, validarCampos, esAdminRole } = require('../middlewares')
 const router = Router()
 
 /**
- * {{url}}/api/categorias
+ * {{url}}/api/productos
  */
 
-// Obtener todas las categorias - publico
+// Obtener todas las productos - publico
 router.get('/', obtenerProductos )
 
 // Obtener una categoria por id - publico
